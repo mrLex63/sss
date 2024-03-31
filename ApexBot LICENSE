@@ -1,0 +1,57 @@
+Each license is tied to a certain role and certain duration.
+
+When member redeems the license he will get that role for that certain duration.
+
+You can make all of your roles subscribable and each license can have different expiration date.
+
+Members can have unlimited subscriptions active at the same time! (only limited by the Discord role limit per member which is 250).
+
+Works independently with multiple guilds.
+
+For full bot usage make sure you have the administrator guild permission (or guild owner).
+
+Default prefix is ‘/’
+
+Default license expiration time is 720h aka 30 days.
+
+After the bot joined the guild call:
+
+?default_role @role_here
+?generate 5
+First line will set @role_here as default guild role.
+
+Second will generate 5 licenses, and as you can see only 5 is an argument so the command will use default guild role (previously set to @role_here) and default expiration date (which is initially set to 720h aka 30days upon guild join).
+
+If you want to use ?generate command in some other way (that doesn’t rely on using default guild data but relies on passed arguments) call !help generate to see full explanation on how to use it.
+
+Quick example for custom !generate arguments:
+
+?generate 10 @subscription 1m
+?generate 5 @supporter 1w
+This will generate 10 licenses for role @subscription in duration of 1 month and 5 licenses for role @supporter in duration of 1 week.
+
+In general these 2 are your friends:
+
+Call ?help to see available commands. Note that you will not see commands that you don’t have the permission for. Example non-admin members will not see admin commands listed when calling help.
+
+Call ?help command_name to see additional help for that specific command. Every command is properly documented.
+
+Optional (so you have more information):
+
+?guild_info
+?faq
+For any other questions/help/suggestions/anything call !support and join the support server :)
+
+Note that even if bot has all of these permissions he might still not be able to manage some roles:
+
+Remember that bots’ role has to be higher in role hierarchy than the managed members top role. Meaning it can only manage roles below its own role in hierarchy.
+Bot needs these permissions to operate:
+
+read_messages=True
+Needed so bot can see commands being called, otherwise nothing will happen when using a command.
+send_messages=True
+For sending feedback to guild (success, failure, errors, info)
+manage_roles=True
+For actually adding/removing licensed roles from members.
+manage_messages=True
+In case there is error while using command that exposes the license your original message that is showing license will get deleted to minimize chances of stealing. This happens for example if you redeem license for a role you already have.
